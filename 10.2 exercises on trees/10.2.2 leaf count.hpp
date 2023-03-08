@@ -1,10 +1,18 @@
+typedef int tree_t;
+
+struct TreeNode{
+  tree_t val;
+  TreeNode* left;
+  TreeNode* right;
+};
+
 int countLeavesTree(TreeNode* t){
 
-  if (t == NULL){
+  if (t == nullptr){
     return 0;
   }
 
-  else if (t->left == NULL && t->right == NULL){
+  else if (t->left == nullptr && t->right == nullptr){
     return 1;
   }
 
