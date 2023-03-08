@@ -1,6 +1,14 @@
+typedef int tree_t;
+ 
+struct TreeNode{
+    tree_t val;
+    TreeNode* left;
+    TreeNode* right;
+};
+
 bool searchTree(tree_t e, TreeNode* t){
   
-  if (t == NULL){
+  if (t == nullptr){
     return false;
   }
 
