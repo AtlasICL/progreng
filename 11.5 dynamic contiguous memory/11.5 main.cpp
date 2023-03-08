@@ -5,7 +5,7 @@
 int main(){
  
   std::ifstream infile;
-  infile.open("Week 8//11.5//input.txt");
+  infile.open("D://Programming//progreng//11.5 dynamic contiguous memory//input.txt");
  
   if(!infile.is_open()){
     std::cout << "error opening file" << std::endl;
