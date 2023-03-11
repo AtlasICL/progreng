@@ -11,11 +11,16 @@ class Stack{
 
 public:
 
-    // TODO:
-    // implement methods:
+    // TODO: implement methods:
     // pop
     // push
     // top
+
+
+
+    stack_t top(){
+        return top_layer->val;
+    }
 
     int size() const{
         return size_s;
@@ -32,3 +37,8 @@ private:
 //     s.top();
 //     s.size();
 // }
+
+
+
+int main(){
+}
