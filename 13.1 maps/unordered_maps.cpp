@@ -27,7 +27,6 @@ public:
         std::cout << "Name: " << name << "\n";
         std::cout << "Pop: " << population << std::endl;
     }
-
 };
 
 int main()
@@ -39,7 +38,7 @@ int main()
 
     std::vector<CityRecord> my_cities{City1, City2, City3, City4};
 
-    for (const auto& city : my_cities)
+    for (const auto &city : my_cities)
     {
         if (city.name == "New York")
         {
@@ -60,10 +59,10 @@ int main()
     // instead of having to iterate through a vector (slow)
     // we can simply do the following:
 
-    CityRecord& LondonData = city_map["London"];
+    CityRecord &LondonData = city_map["London"];
     std::cout << LondonData.population << std::endl;
 
-    // note: 
+    // note:
     // if you look up city_map["Cairo"] when an element with index "Cairo" does not exist
     // then an empty element with index "Cairo" will be ADDED to the map
 
@@ -75,24 +74,30 @@ int main()
     // we will get an exception or a crash
     // therefore we need to use .find()
 
-
-   if (city_map.find("Berlin") != city_map.end())
-   {
-        const CityRecord& berlinData = city_map.at("Berlin");
+    if (city_map.find("Berlin") != city_map.end())
+    {
+        const CityRecord &berlinData = city_map.at("Berlin");
         std::cout << "Berlin pop: " << berlinData.population << std::endl;
-   }
-   else 
-   {
-        std::cout << "Berlin does not exist in map \n";    
-   }
+    }
+    else
+    {
+        std::cout << "Berlin does not exist in map \n";
+    }
 
-   if (city_map.find("Istanbul") != city_map.end())
-   {
-        const CityRecord& istanbulData = city_map.at("Istanbul");
+    if (city_map.find("Istanbul") != city_map.end())
+    {
+        const CityRecord &istanbulData = city_map.at("Istanbul");
         std::cout << "Istanbul pop: " << istanbulData.population << std::endl;
-   }
-   else 
-   {
-        std::cout << "Istanbul does not exist in map \n";    
-   }
+    }
+    else
+    {
+        std::cout << "Istanbul does not exist in map \n";
+    }
+
+    // additional notes: when to use std::vector and when to use std::map
+    // general rule is to use vector when we have to iterate through elements
+    // vector is contiguous memory, hence very fast to iterate through
+    // however, if we want to be able to look up data
+    // like in this example
+    // maps are an order of magnitude faster
 }
