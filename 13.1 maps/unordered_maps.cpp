@@ -63,4 +63,36 @@ int main()
     CityRecord& LondonData = city_map["London"];
     std::cout << LondonData.population << std::endl;
 
+    // note: 
+    // if you look up city_map["Cairo"] when an element with index "Cairo" does not exist
+    // then an empty element with index "Cairo" will be ADDED to the map
+
+    // if you do not want this behaviour
+    // use .at() method
+    // ie city_map.at(Cairo)
+
+    // however, if we use .at() with an element which does not exist in the map
+    // we will get an exception or a crash
+    // therefore we need to use .find()
+
+
+   if (city_map.find("Berlin") != city_map.end())
+   {
+        const CityRecord& berlinData = city_map.at("Berlin");
+        std::cout << "Berlin pop: " << berlinData.population << std::endl;
+   }
+   else 
+   {
+        std::cout << "Berlin does not exist in map \n";    
+   }
+
+   if (city_map.find("Istanbul") != city_map.end())
+   {
+        const CityRecord& istanbulData = city_map.at("Istanbul");
+        std::cout << "Istanbul pop: " << istanbulData.population << std::endl;
+   }
+   else 
+   {
+        std::cout << "Istanbul does not exist in map \n";    
+   }
 }
