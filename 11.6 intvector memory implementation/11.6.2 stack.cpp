@@ -16,8 +16,6 @@ public:
     // push
     // top
 
-
-
     stack_t top(){
         return top_layer->val;
     }
@@ -37,8 +35,6 @@ private:
 //     s.top();
 //     s.size();
 // }
-
-
 
 int main(){
 }

@@ -66,7 +66,9 @@ bool searchTree(tree_t e, TreeNode* t){
     if (e > t->val){
       return searchTree(e, t->right);
     }
+    
   }
+
 }
  
 int main(){
