@@ -100,4 +100,14 @@ int main()
     // however, if we want to be able to look up data
     // like in this example
     // maps are an order of magnitude faster
+    
+    // regardless, if we did still want to iterate through a map for debugging for example
+    // we would do so like this:
+
+    for (auto& [name, city] : city_map)
+    {
+        std::cout << name << ", pop: " << city.population << std::endl;
+    }
+
+    // using structured bindings introduced in C++ 17
 }
