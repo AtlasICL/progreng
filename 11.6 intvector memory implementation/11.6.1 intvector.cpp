@@ -1,28 +1,32 @@
 #include <iostream>
 
-class intvector {
+typedef int vector_type;
+
+class vector
+{
 
 public:
-  intvector() {
+  vector()
+  {
     m_size = 0;
     m_capacity = 1;
-    p = new int[m_capacity];
+    p = new vector_type[m_capacity];
   }
 
-  void push_back(int n) {
+  void push_back(vector_type n)
+  {
+    if (m_capacity <= m_size)
+    {
+      m_capacity = 2 * m_capacity;
+      vector_type* tmp = new vector_type[m_capacity];
 
-    if (m_capacity <= m_size) {
-      m_capacity = m_capacity * 2;
-
-      int *tmp_p;
-      tmp_p = new int[m_capacity];
-
-      for (int i = 0; i < m_size; i++) {
-        tmp_p[i] = p[i];
+      for (int i = 0; i < m_size; ++i)
+      {
+        tmp[i] = p[i];
       }
 
-      delete p;
-      p = tmp_p;
+      delete[] p;
+      p = tmp;
     }
 
     p[m_size] = n;
@@ -33,63 +37,50 @@ public:
 
   int capacity() const { return m_capacity; }
 
-  int at(int i) const { return p[i]; }
+  vector_type at(int i) const { return p[i]; }
 
-  ~intvector() { delete[] p; }
+  ~vector() { delete[] p; }
 
-  intvector(const intvector &v) {
-    m_capacity = v.m_capacity;
-    m_size = v.m_size;
-
+  vector(const vector& vin)
+  {
+    m_capacity = vin.capacity();
+    m_size = vin.size();
     p = new int[m_capacity];
-
-    for (int i = 0; i < m_size; i++) {
-      p[i] = v.p[i];
+    for (int i = 0; i<m_size; i++)
+    {
+      p[i] = vin.p[i];
     }
-
-    std::cout << "--copy constructor called--" << std::endl;
   }
 
-  // assignment operator
-  // (see explanation in exercise below)
-
-  intvector &operator=(const intvector &v) {
-
-    // first of all we check whether this is being called
-    // during a reflexive assignment
-    // that is something such as a = a;
-
-    // if yes we don't do anything
-    // otherwise we enter the if statement
-
-    if (this == &v) {
+  vector &operator=(const vector& vin)
+  {
+    if (this == &vin)
+    {
       return *this;
     }
 
-    if (this != &v) {
-
+    else
+    {
       delete[] p;
-
-      m_capacity = v.m_capacity;
-      m_size = v.m_size;
+      m_capacity = vin.capacity();
+      m_size = vin.size();
 
       p = new int[m_capacity];
-
-      for (int i = 0; i < m_size; i++) {
-        p[i] = v.p[i];
-      }
+      for (int i = 0; i<m_size; i++){
+        p[i] = vin.p[i];
+      } 
     }
     return *this;
   }
 
 private:
-  int *p;
   int m_size;
   int m_capacity;
+  vector_type* p;
 };
 
 int main() {
-  intvector iv1;
+  vector iv1;
 
   for (int i = 0; i < 9; i++) {
     iv1.push_back(i);
@@ -107,10 +98,10 @@ int main() {
   std::cout << std::endl;
 
   // calling the copy constructor
-  intvector iv2(iv1);
+  vector iv2(iv1);
 
   // calling the assignment operator
-  intvector iv3;
+  vector iv3;
   iv3.operator=(iv1);
 
   iv1.push_back(9);
