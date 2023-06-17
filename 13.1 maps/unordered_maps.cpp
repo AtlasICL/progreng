@@ -104,7 +104,7 @@ int main()
     // regardless, if we did still want to iterate through a map for debugging for example
     // we would do so like this:
 
-    for (auto& [name, city] : city_map)
+    for (const auto& [name, city] : city_map)
     {
         std::cout << name << ", pop: " << city.population << std::endl;
     }
