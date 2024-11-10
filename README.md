@@ -7,6 +7,6 @@ These are some of my exercises from the year 1 Programming for Engineers module.
 
 ### Assessments
 
-The **autumn** term assessment was focused on input/output to files, basic data structures, and control flow.
-The **spring** term assessment consisted of various manipulations on a tree where each node had an arbitrary number of child nodes. 
+The **autumn** term assessment was focused on input/output to files, basic data structures, and control flow.  
+The **spring** term assessment consisted of various manipulations on a tree where each node had an arbitrary number of child nodes.  
 The **summer** term assessment was constructing a decision tree from an input file, and processing queries.
